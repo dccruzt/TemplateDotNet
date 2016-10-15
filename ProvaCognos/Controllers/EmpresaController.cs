@@ -13,6 +13,7 @@ namespace ProvaCognos.Controllers
         public ActionResult Index()
         {
             List<Empresa> model = EmpresaRepository.list();
+
             return View(model);
         }
     }
