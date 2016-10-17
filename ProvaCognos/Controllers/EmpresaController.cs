@@ -50,5 +50,12 @@ namespace ProvaCognos.Controllers
 
             return RedirectToAction("Details", new { id = model.EmpresaID });
         }
+
+        public ActionResult Delete(int id)
+        {
+            EmpresaRepository.delete(id);
+
+            return RedirectToAction("Index");
+        }
     }
 }

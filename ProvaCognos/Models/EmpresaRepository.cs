@@ -38,6 +38,7 @@ namespace ProvaCognos.Models
         {
             try
             {
+                empresa.DataInclusao = DateTime.Now;
                 contextDB.Empresa.Add(empresa);
                 contextDB.SaveChanges();
             }
