@@ -6,15 +6,15 @@ using ProvaCognos.Utils;
 
 namespace ProvaCognos.Models
 {
-    public class EmpresaRepository
+    public class ContatoRepository
     {
         private static ProvaCognosEntities contextDB = new ProvaCognosEntities();
 
-        public static List<Empresa> list()
+        public static List<Contato> list()
         {
             try
             {
-                return contextDB.Empresa.Where(x => x.Status != StaticValues.EmpresaStatus.EXCLUIDA).ToList();
+                return contextDB.Contato.Where(x => x.Status != StaticValues.ContatoStatus.EXCLUIDA).ToList();
             }
             catch (Exception ex)
             {
@@ -22,11 +22,11 @@ namespace ProvaCognos.Models
             }
         }
 
-        public static Empresa get(int empresaID)
+        public static Contato get(int contatoID)
         {
             try
             {
-                return contextDB.Empresa.Find(empresaID);
+                return contextDB.Contato.Find(contatoID);
             }
             catch (Exception ex)
             {
@@ -34,11 +34,11 @@ namespace ProvaCognos.Models
             }
         }
 
-        public static void create(Empresa empresa)
+        public static void create(Contato contato)
         {
             try
             {
-                contextDB.Empresa.Add(empresa);
+                contextDB.Contato.Add(contato);
                 contextDB.SaveChanges();
             }
             catch (Exception ex)
@@ -47,17 +47,18 @@ namespace ProvaCognos.Models
             }
         }
 
-        public static void update(Empresa empresa)
+        public static void update(Contato contato)
         {
             try
             {
-                Empresa oldEmpresa = contextDB.Empresa.Find(empresa.EmpresaID);
-                oldEmpresa.Nome = empresa.Nome;
-                oldEmpresa.Telefone = empresa.Telefone;
-                oldEmpresa.Site = empresa.Site;
-                oldEmpresa.Status = empresa.Status;
-                oldEmpresa.DataAlteracao = DateTime.Now;
-                oldEmpresa.Contato = empresa.Contato;
+                Contato oldContato = contextDB.Contato.Find(contato.ContatoID);
+                oldContato.Nome = contato.Nome;
+                oldContato.Telefone = contato.Telefone;
+                oldContato.Cargo = contato.Cargo;
+                oldContato.Celular = contato.Celular;
+                oldContato.Email = contato.Email;
+                oldContato.Status = contato.Status;
+                oldContato.DataAlteracao = DateTime.Now;
 
                 contextDB.SaveChanges();
             }
@@ -67,12 +68,12 @@ namespace ProvaCognos.Models
             }
         }
 
-        public static void delete(int empresaID)
+        public static void delete(int contatoID)
         {
             try
             {
-                Empresa delEmpresa = contextDB.Empresa.Find(empresaID);
-                delEmpresa.Status = StaticValues.EmpresaStatus.EXCLUIDA;
+                Contato delContato = contextDB.Contato.Find(contatoID);
+                delContato.Status = StaticValues.ContatoStatus.EXCLUIDA;
                 contextDB.SaveChanges();
             }
             catch (Exception ex)

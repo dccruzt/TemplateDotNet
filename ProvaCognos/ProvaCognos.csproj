@@ -162,6 +162,7 @@
     <Compile Include="Models\Empresa.cs">
       <DependentUpon>ProvaCognos.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContatoRepository.cs" />
     <Compile Include="Models\EmpresaRepository.cs" />
     <Compile Include="Models\ProvaCognos.Context.cs">
       <AutoGen>True</AutoGen>
@@ -197,6 +198,9 @@
     <Content Include="Views\Empresa\Index.cshtml" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Empresa\Edit.cshtml" />
+    <Content Include="Views\Empresa\Create.cshtml" />
+    <Content Include="Views\Empresa\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

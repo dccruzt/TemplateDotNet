@@ -8,7 +8,9 @@
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
-    <table class="table">
+@if (Model != null)
+{
+    <table class="table" id="tableEmpresa">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
@@ -30,10 +32,7 @@
             </th>
             <th></th>
         </tr>
-        @if (Model != null)
-        {
-
-            foreach (var item in Model)
+            @foreach (var item in Model)
             {
                 <tr>
                     <td>
@@ -61,7 +60,20 @@
                     </td>
                 </tr>
             }
-        }
-
     </table>
+}
+else
+{
+    <p>Ainda não existem empresas.</p>
+}
 </div>
+
+@section Scripts{
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#tableEmpresa').DataTable();
+            //alert("Hola dani");
+        });
+    </script>   
+}
